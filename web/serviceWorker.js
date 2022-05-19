@@ -10,6 +10,7 @@ const contentToCache = [
 // ServiceWorker設置
 self.addEventListener('install', function(e) {
 	console.log('[Service Worker] Install');
+	console.log(contentToCache);
 	e.waitUntil(
 		// 下記完了まで、install待機
 	    caches.open(cacheName).then(function(cache) {
