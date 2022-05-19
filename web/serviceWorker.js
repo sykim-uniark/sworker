@@ -3,7 +3,7 @@ console.log('[Service Worker] start...');
 const cacheName = 'pwa-cache';
 const contentToCache = [
 	//'img/test1.png',
-	'index.html'
+	'/index.html'
 ];
 
 // ServiceWorker設置
