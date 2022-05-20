@@ -1,6 +1,6 @@
 console.log('[Service Worker] start.');
 
-const cacheName = 'pwa-cache17';
+const cacheName = 'pwa-cache18';
 const contentToCache = [
 	'index.html',
 	'index.js',
@@ -21,6 +21,12 @@ self.addEventListener('install', function (e) {
 		caches.open(cacheName).then(function (cache) {
 			console.log('[Service Worker install] Caching all');
 			return cache.addAll(contentToCache);
+		})
+	);
+
+	e.waitUntil(
+		self.registration.showNotification('notify test', {
+			body: 'notify body',
 		})
 	);
 });
@@ -56,7 +62,6 @@ self.addEventListener('fetch', function (e) {
 		})
 	);
 });
-
 
 
 

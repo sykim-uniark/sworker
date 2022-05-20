@@ -2,6 +2,7 @@ start();
 
 // onload関数
 function start() {
+	serviceRegist();
 }
 
 function testbtn1() {
@@ -28,14 +29,15 @@ function testbtn2() {
 }
 
 function testbtn3() {
-	log('push testbtn3.');
+}
+
+function serviceRegist() {
 	if ('serviceWorker' in navigator) {
 		log('regist serviceWorker.');
 		navigator.serviceWorker.register('serviceWorker.js');
+		console.log(navigator.serviceWorker);
 	};
-	log('end testbtn3.');
 }
-
 
 // 画面にテキスト出力、consoleと違って単純にテキストだけ出力している
 function log() {
