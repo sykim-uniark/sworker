@@ -1,4 +1,4 @@
-const cacheName = 'pwa-cache22';
+const cacheName = 'pwa-cache23';
 const contentToCache = [
 	'index.html',
 	'index.js',
@@ -19,13 +19,6 @@ self.addEventListener('install', function (e) {
 		caches.open(cacheName).then(function (cache) {
 			console.log('[Service Worker install] Caching all');
 			return cache.addAll(contentToCache);
-		})
-	);
-
-	e.waitUntil(
-		self.registration.showNotification('notify test', {
-			body: 'notify body',
-			badge: 'img/ic32.png'
 		})
 	);
 });
