@@ -24,16 +24,15 @@ function testbtn1() {
 }
 
 function testbtn2() {
-	regServiceWorker();
-}
-
-
-
-function regServiceWorker() {
+	log('push testbtn2.');
 	if ('serviceWorker' in navigator) {
+		log('regist serviceWorker.');
 		navigator.serviceWorker.register('serviceWorker.js');
 	};
+	log('end testbtn2.');
 }
+
+
 
 // 画面にテキスト出力、consoleと違って単純にテキストだけ出力している
 function log() {
