@@ -3,6 +3,9 @@ start();
 // onload関数
 function start() {
 	log("start");
+	if ('serviceWorker' in navigator) {
+		navigator.serviceWorker.register('serviceWorker.js');
+	};
 }
 
 function testbtn1() {
@@ -14,12 +17,10 @@ function testbtn1() {
 
 			setTimeout(function () {
 				var notification = new Notification('Notification title', {
-					icon: 'http://cdn.sstatic.net/stackexchange/img/logos/so/so-icon.png',
+					icon: 'img/ic512.png',
 					body: 'Notification text',
 				});
-				notification.onclick = function () {
-					log("onclick!");
-				};
+				// notification.onclick = function () {};
 			}, 3000);
 
 		}
@@ -27,10 +28,6 @@ function testbtn1() {
 }
 
 function testbtn2() {
-	if ('serviceWorker' in navigator) {
-		log('testbtn3');
-		navigator.serviceWorker.register('serviceWorker.js');
-	};
 }
 
 
