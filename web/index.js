@@ -10,25 +10,25 @@ function testbtn1() {
 	log("test!2");
 
 	// 通知を許可したけどスマホでは通知表示出来ていない。↓
-	Notification.requestPermission().then(function(result) {
+	Notification.requestPermission().then(function (result) {
 		if (result === 'granted') {
-			
-            setTimeout(function () {
-                var notification = new Notification('Notification title', {
-                    icon: 'http://cdn.sstatic.net/stackexchange/img/logos/so/so-icon.png',
-                    body: 'Notification text',
-                });
-                notification.onclick = function () {
-                    log("onclick!");
-                };
-            }, 3000);
+
+			setTimeout(function () {
+				var notification = new Notification('Notification title', {
+					icon: 'http://cdn.sstatic.net/stackexchange/img/logos/so/so-icon.png',
+					body: 'Notification text',
+				});
+				notification.onclick = function () {
+					log("onclick!");
+				};
+			}, 3000);
 
 		}
 	});
 }
 
 function testbtn2() {
-	if('serviceWorker' in navigator) {
+	if ('serviceWorker' in navigator) {
 		log('testbtn2');
 		navigator.serviceWorker.register('serviceWorker.js');
 	};
@@ -39,8 +39,8 @@ function testbtn2() {
 function log() {
 	//console.log(arguments);
 	let logger = $('#logger');
-  for (var i=0; i<arguments.length; i++){
-    logger.append(arguments[i]);
-  }
+	for (var i = 0; i < arguments.length; i++) {
+		logger.append(arguments[i]);
+	}
 	logger.append("\n");
 }
