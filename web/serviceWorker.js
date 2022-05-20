@@ -1,26 +1,55 @@
-console.log('[Service Worker] start...');
+console.log('[Service Worker] start.');
 
-const cacheName = 'pwa-cache';
+const cacheName = 'pwa-cache1';
 const contentToCache = [
-	//'img/test1.png',
 	'index.html',
 	'img/test1.png'
 ];
 
 // ServiceWorker設置
-self.addEventListener('install', function(e) {
-	console.log('[Service Worker] Install');
-	console.log(contentToCache);
+self.addEventListener('install', function (e) {
+	console.log('[Service Worker install] ', contentToCache);
 	e.waitUntil(
 		// 下記完了まで、install待機
-	    caches.open(cacheName).then(function(cache) {
-			console.log('[Service Worker] Caching all: app shell and content');
+		caches.open(cacheName).then(function (cache) {
+			console.log('[Service Worker install] Caching all');
 			return cache.addAll(contentToCache);
-	  })
+		})
 	);
 });
 
 // いらないファイル削除、cache整理
-// self.addEventListener('activate', function(e) {});
+self.addEventListener('activate', function (e) {
+	console.log('[Service Worker activate] cacheName ', cacheName);
+	e.waitUntil(
+		caches.keys().then(function (keyList) {
+			return Promise.all(keyList.map(function (key) {
+				console.log('[Service Worker activate] map:key ', key);
+				if (cacheName.indexOf(key) === -1) {
+					return caches.delete(key);
+				}
+			}));
+		})
+	);
+});
+
+self.addEventListener('fetch', function (e) {
+	e.respondWith(
+		caches.match(e.request).then(function (r) {
+			console.log('[Service Worker] Fetching resource: ', e.request.url);
+			if (r) return r;
+
+			return fetch(e.request).then(function (response) {
+				return caches.open(cacheName).then(function (cache) {
+					console.log('[Service Worker] Caching new resource: ' + e.request.url);
+					cache.put(e.request, response.clone());
+					return response;
+				});
+			});
+		})
+	);
+});
+
+
 
 
