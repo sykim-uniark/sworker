@@ -25,10 +25,12 @@ function testbtn1() {
 
 function testbtn2() {
 	log('push testbtn2.');
+	serviceRegist();
 }
 
 function testbtn3() {
-	serviceRegist();
+	log('push testbtn3.');
+	showNotification();
 }
 
 function serviceRegist() {
@@ -36,6 +38,21 @@ function serviceRegist() {
 		navigator.serviceWorker.register('serviceWorker.js');
 		log('regist serviceWorker.');
 	};
+}
+
+function showNotification() {
+  Notification.requestPermission(function(result) {
+    if (result === 'granted') {
+      navigator.serviceWorker.ready.then(function(registration) {
+        registration.showNotification('Vibration Sample', {
+          body: 'Buzz! Buzz!',
+          icon: 'img/ic32.png',
+          vibrate: [200, 100, 200, 100, 200, 100, 200],
+          tag: 'vibration-sample'
+        });
+      });
+    }
+  });
 }
 
 // 画面にテキスト出力、consoleと違って単純にテキストだけ出力している
