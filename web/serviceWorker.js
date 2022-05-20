@@ -1,11 +1,11 @@
 console.log('[Service Worker] start.');
 
-const cacheName = 'pwa-cache7';
+const cacheName = 'pwa-cache8';
 const contentToCache = [
 	'index.html',
 	'index.js',
 	'img/ic32.png',
-	'img/ic512',
+	'img/ic512.png',
 	'img/test1.png'
 ];
 
