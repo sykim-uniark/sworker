@@ -2,7 +2,7 @@ start();
 
 // onload関数
 function start() {
-	// serviceRegist();
+	serviceRegist();
 }
 
 function testbtn1() {

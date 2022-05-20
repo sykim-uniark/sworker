@@ -1,6 +1,4 @@
-console.log('[Service Worker] start20.');
-
-const cacheName = 'pwa-cache20';
+const cacheName = 'pwa-cache21';
 const contentToCache = [
 	'index.html',
 	'index.js',
@@ -27,7 +25,7 @@ self.addEventListener('install', function (e) {
 	e.waitUntil(
 		self.registration.showNotification('notify test', {
 			body: 'notify body',
-			badge: '/img/ic32.png'
+			badge: 'img/ic32.png'
 		})
 	);
 });
@@ -47,6 +45,9 @@ self.addEventListener('activate', function (e) {
 	);
 });
 
+self.addEventListener('fetch', (e) => {
+  console.log(`[Service Worker] Fetched resource ${e.request.url}`);
+});
 
 
 
