@@ -1,4 +1,4 @@
-const cacheName = 'pwa-cache28';
+const cacheName = 'pwa-cache29';
 const contentToCache = [
 	'index.html',
 	'index.js',

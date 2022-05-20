@@ -81,10 +81,9 @@ function updateSubscriptionOnServer(subscription) {
 
   if (subscription) {
     subscriptionJson.textContent = JSON.stringify(subscription);
-    subscriptionDetails.classList.remove('is-invisible');
   } else {
-    subscriptionDetails.classList.add('is-invisible');
-  }
+		subscriptionJson.textContent = "";
+	}
 }
 
 function showNotification() {
