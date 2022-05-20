@@ -2,7 +2,6 @@ start();
 
 // onload関数
 function start() {
-	serviceRegist();
 }
 
 function testbtn1() {
@@ -34,9 +33,8 @@ function testbtn3() {
 
 function serviceRegist() {
 	if ('serviceWorker' in navigator) {
-		log('regist serviceWorker.');
 		navigator.serviceWorker.register('serviceWorker.js');
-		console.log(navigator.serviceWorker);
+		log('regist serviceWorker.');
 	};
 }
 

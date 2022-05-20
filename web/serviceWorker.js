@@ -1,14 +1,14 @@
-const cacheName = 'pwa-cache21';
+const cacheName = 'pwa-cache22';
 const contentToCache = [
 	'index.html',
 	'index.js',
-	'pwatest.webmanifest',
-	'serviceWorker.js',
+	//'pwatest.webmanifest',
+	//'serviceWorker.js',
 	'img/ic32.png',
 	'img/ic512.png',
 	'img/test1.png',
-	'lib/jquery/jquery-3.6.0.min.js',
-	'lib/jquery/jquery-3.6.0.min.map',
+	//'lib/jquery/jquery-3.6.0.min.js',
+	//'lib/jquery/jquery-3.6.0.min.map',
 ];
 
 // ServiceWorker設置
