@@ -37,7 +37,7 @@ function testbtn2() {
 
 // 画面にテキスト出力、consoleと違って単純にテキストだけ出力している
 function log() {
-	//console.log(arguments);
+	console.log(arguments);
 	let logger = $('#logger');
 	for (var i = 0; i < arguments.length; i++) {
 		logger.append(arguments[i]);
