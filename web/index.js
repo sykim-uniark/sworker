@@ -25,13 +25,16 @@ function testbtn1() {
 
 function testbtn2() {
 	log('push testbtn2.');
+}
+
+function testbtn3() {
+	log('push testbtn3.');
 	if ('serviceWorker' in navigator) {
 		log('regist serviceWorker.');
 		navigator.serviceWorker.register('serviceWorker.js');
 	};
-	log('end testbtn2.');
+	log('end testbtn3.');
 }
-
 
 
 // 画面にテキスト出力、consoleと違って単純にテキストだけ出力している
