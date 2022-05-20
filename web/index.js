@@ -2,8 +2,6 @@ start();
 
 // onload関数
 function start() {
-	log("start");
-	regServiceWorker();
 }
 
 function testbtn1() {
@@ -26,6 +24,7 @@ function testbtn1() {
 }
 
 function testbtn2() {
+	regServiceWorker();
 }
 
 
