@@ -1,5 +1,8 @@
 start();
 
+let isSubscribed = false;
+let sw = null;
+
 // onload関数
 function start() {
 	serviceRegist();
@@ -35,9 +38,38 @@ function testbtn3() {
 
 function serviceRegist() {
 	if ('serviceWorker' in navigator) {
-		navigator.serviceWorker.register('serviceWorker.js');
-		log('regist serviceWorker.');
+		navigator.serviceWorker.register('serviceWorker.js').then((swreg)=>{
+			log('regist serviceWorker.');
+			sw = swreg;
+
+			sw.pushManager.getSubscription().then((subscription)=>{
+				isSubscribed = !(subscription === null);
+				updateSubscriptionOnServer(subscription);
+
+				if (isSubscribed) {
+					console.log('User IS subscribed.');
+				} else {
+					console.log('User is NOT subscribed.');
+				}
+
+			});
+		});
 	};
+}
+
+function updateSubscriptionOnServer(subscription) {
+  // TODO: Send subscription to application server
+
+  const subscriptionJson = document.querySelector('.js-subscription-json');
+  const subscriptionDetails =
+    document.querySelector('.js-subscription-details');
+
+  if (subscription) {
+    subscriptionJson.textContent = JSON.stringify(subscription);
+    subscriptionDetails.classList.remove('is-invisible');
+  } else {
+    subscriptionDetails.classList.add('is-invisible');
+  }
 }
 
 function showNotification() {

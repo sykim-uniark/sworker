@@ -1,4 +1,4 @@
-const cacheName = 'pwa-cache26';
+const cacheName = 'pwa-cache27';
 const contentToCache = [
 	'index.html',
 	'index.js',
@@ -42,5 +42,18 @@ self.addEventListener('fetch', (e) => {
   console.log(`[Service Worker] Fetched resource ${e.request.url}`);
 });
 
+self.addEventListener('push', function(event) {
+  console.log('[Service Worker] Push Received.');
+  console.log(`[Service Worker] Push had this data: "${event.data.text()}"`);
 
+  const title = 'Push Codelab';
+  const options = {
+		body: 'Buzz! Buzz!',
+		icon: 'img/ic32.png',
+		vibrate: [200, 100, 200, 100, 200, 100, 200],
+		tag: 'vibration-sample'
+  };
+
+  event.waitUntil(self.registration.showNotification(title, options));
+});
 
