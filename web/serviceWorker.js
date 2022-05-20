@@ -1,6 +1,6 @@
 console.log('[Service Worker] start.');
 
-const cacheName = 'pwa-cache15';
+const cacheName = 'pwa-cache16';
 const contentToCache = [
 	'index.html',
 	'index.js',
