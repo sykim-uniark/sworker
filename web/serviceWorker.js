@@ -1,4 +1,4 @@
-const cacheName = 'pwa-cache29';
+const cacheName = 'pwa-cache30';
 const contentToCache = [
 	'index.html',
 	'index.js',
@@ -48,7 +48,7 @@ self.addEventListener('push', function(event) {
 
   const title = 'Push Codelab';
   const options = {
-		body: 'Buzz! Buzz!',
+		body: 'text: ' + event.data.text(),
 		icon: 'img/ic32.png',
 		vibrate: [200, 100, 200, 100, 200, 100, 200],
 		tag: 'vibration-sample'
