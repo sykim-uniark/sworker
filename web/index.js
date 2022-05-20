@@ -3,11 +3,10 @@ start();
 // onload関数
 function start() {
 	log("start");
-
 }
 
 function testbtn1() {
-	log("test!2");
+	log("test!1");
 
 	// 通知を許可したけどスマホでは通知表示出来ていない。↓
 	Notification.requestPermission().then(function (result) {
@@ -30,7 +29,7 @@ function testbtn1() {
 function testbtn2() {
 	if ('serviceWorker' in navigator) {
 		log('testbtn2');
-		navigator.serviceWorker.register('serviceWorker.js');
+		navigator.serviceWorker.register('/sworker/web/serviceWorker.js');
 	};
 }
 
