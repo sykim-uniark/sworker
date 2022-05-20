@@ -29,7 +29,7 @@ function testbtn1() {
 function testbtn2() {
 	if ('serviceWorker' in navigator) {
 		log('testbtn3');
-		navigator.serviceWorker.register('/sworker/web/serviceWorker.js');
+		navigator.serviceWorker.register('serviceWorker.js');
 	};
 }
 
