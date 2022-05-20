@@ -1,7 +1,7 @@
 {
-  "name": "Progressive Web App Test",
-  "short_name": "PwaTest",
-  "description": "Progressive Web App Test!",
+  "name": "Progressive Web App Test1",
+  "short_name": "PwaMyTest1",
+  "description": "Progressive Web App Test!1",
   "icons": [
       {
           "src": "img/ic32.png",
