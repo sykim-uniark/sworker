@@ -27,6 +27,7 @@ self.addEventListener('install', function (e) {
 	e.waitUntil(
 		self.registration.showNotification('notify test', {
 			body: 'notify body',
+			badge: '/img/ic32.png'
 		})
 	);
 });
