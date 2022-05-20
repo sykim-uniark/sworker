@@ -2,6 +2,7 @@ start();
 
 // onload関数
 function start() {
+	serviceRegist();
 }
 
 function testbtn1() {
@@ -25,7 +26,6 @@ function testbtn1() {
 
 function testbtn2() {
 	log('push testbtn2.');
-	serviceRegist();
 }
 
 function testbtn3() {
