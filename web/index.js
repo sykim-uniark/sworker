@@ -2,6 +2,7 @@ start();
 
 let isSubscribed = false;
 let sw = null;
+const applicationServerPublicKey = 'BFxZasZTOa2ijnJ-zZyRIMH1gw24ecj5RY0qYmVehdV_2P_WFu2mDHXZ2VpCwVP_Ov_JifC-Iu0Mmhc7KBSnL1k';
 
 // onload関数
 function start() {
@@ -41,6 +42,20 @@ function serviceRegist() {
 		navigator.serviceWorker.register('serviceWorker.js').then((swreg)=>{
 			log('regist serviceWorker.');
 			sw = swreg;
+
+			const applicationServerKey = urlB64ToUint8Array(applicationServerPublicKey);
+			sw.pushManager.subscribe({
+				userVisibleOnly: true,
+				applicationServerKey: applicationServerKey
+			})
+			.then(function(subscription) {
+				console.log('User is subscribed:', subscription);
+				updateSubscriptionOnServer(subscription);
+				isSubscribed = true;
+			})
+			.catch(function(err) {
+				console.log('Failed to subscribe the user: ', err);
+			});
 
 			sw.pushManager.getSubscription().then((subscription)=>{
 				isSubscribed = !(subscription === null);
@@ -95,4 +110,19 @@ function log() {
 		logger.append(arguments[i]);
 	}
 	logger.append("\n");
+}
+
+function urlB64ToUint8Array(base64String) {
+  const padding = '='.repeat((4 - base64String.length % 4) % 4);
+  const base64 = (base64String + padding)
+    .replace(/\-/g, '+')
+    .replace(/_/g, '/');
+
+  const rawData = window.atob(base64);
+  const outputArray = new Uint8Array(rawData.length);
+
+  for (let i = 0; i < rawData.length; ++i) {
+    outputArray[i] = rawData.charCodeAt(i);
+  }
+  return outputArray;
 }
